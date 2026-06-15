@@ -95,10 +95,10 @@ ipython_config.py
 # Pipfile.lock
 
 # UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-# uv.lock
+#   uv.lock pins the *dev* environment, not what downstream users install.
+#   camel-env is a library, so we ignore it (commit it later if we want
+#   reproducible CI). See brain/decisions.md.
+uv.lock
 
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
@@ -216,3 +216,16 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Project-specific
+# ---------------------------------------------------------------------------
+# macOS
+.DS_Store
+
+# Claude Code
+#   Commit only the project pointer at .claude/CLAUDE.md (+ brain/).
+#   Keep the root CLAUDE.md local-only, and ignore machine-local settings.
+/CLAUDE.md
+.claude/settings.local.json
+
